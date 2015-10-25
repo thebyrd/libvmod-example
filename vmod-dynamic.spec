@@ -1,5 +1,5 @@
-Summary: Example VMOD for Varnish
-Name: vmod-example
+Summary: Dynamic Backend VMOD for Varnish
+Name: vmod-dynamic
 Version: 0.1
 Release: 1%{?dist}
 License: BSD
@@ -15,7 +15,7 @@ BuildRequires: varnish-libs-devel >= 4.0.2
 
 
 %description
-Example VMOD
+Dynamic Backend VMOD
 
 
 %prep
@@ -46,5 +46,5 @@ mv %{buildroot}/usr/share/doc/lib%{name} %{buildroot}/usr/share/doc/%{name}
 
 
 %changelog
-* Tue Nov 14 2012 Lasse Karstensen <lasse@varnish-software.com> - 0.1-0.20121114
-- Initial version.
+* Sunday Oct 25 2015 David Byrd <dbyrd@do.co> - 0.1-0.20151025
+- Initial version. Built from example vmod.

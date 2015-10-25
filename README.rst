@@ -1,10 +1,10 @@
 ============
-vmod_example
+vmod_dynamic
 ============
 
-----------------------
-Varnish Example Module
-----------------------
+------------------------------
+Varnish Dynamic Backend Module
+------------------------------
 
 :Date: 2015-03-03
 :Version: 1.0
@@ -13,14 +13,12 @@ Varnish Example Module
 SYNOPSIS
 ========
 
-import example;
+import dynamic;
 
 DESCRIPTION
 ===========
 
-Example Varnish vmod demonstrating how to write an out-of-tree Varnish vmod.
-
-Implements the traditional Hello World as a vmod.
+Varnish vmod for dynamic backends using subdomain.
 
 FUNCTIONS
 =========
@@ -39,7 +37,7 @@ Description
 Example
         ::
 
-                set resp.http.hello = example.hello("World");
+                set resp.http.hello = dynamic.hello("World");
 
 INSTALLATION
 ============
@@ -88,11 +86,11 @@ USAGE EXAMPLE
 
 In your VCL you could then use this vmod along the following lines::
 
-        import example;
+        import dynamic;
 
         sub vcl_deliver {
                 # This sets resp.http.hello to "Hello, World"
-                set resp.http.hello = example.hello("World");
+                set resp.http.hello = dynamic.hello("World");
         }
 
 COMMON PROBLEMS

@@ -1,0 +1,17 @@
+#
+# Copyright David Byrd (c) 2015.
+#
+# (vmodtool requires this format.)
+#
+
+$Module dynamic 3 Dynamic Backend VMOD
+
+DESCRIPTION
+===========
+
+The dynamic backend varnish module will dynamically create a backend based on a subdomain.
+
+$Init init_function
+$Function STRING hello(STRING)
+
+This is a test function that simply says hello.
