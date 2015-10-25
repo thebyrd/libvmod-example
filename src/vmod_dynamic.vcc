@@ -12,6 +12,6 @@ DESCRIPTION
 The dynamic backend varnish module will dynamically create a backend based on a subdomain.
 
 $Init init_function
-$Function STRING hello(STRING)
+$Function STRING backend_hostname(STRING)
 
-This is a test function that simply says hello.
+returns the backend's hostname that it has parsed from the request hostname subdomain.

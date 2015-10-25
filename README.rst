@@ -23,13 +23,13 @@ Varnish vmod for dynamic backends using subdomain.
 FUNCTIONS
 =========
 
-hello
+backend_hostname
 -----
 
 Prototype
         ::
 
-                hello(STRING S)
+                backend_hostname(STRING S)
 Return value
 	STRING
 Description
@@ -37,7 +37,7 @@ Description
 Example
         ::
 
-                set resp.http.hello = dynamic.hello("World");
+                set resp.http.hello = dynamic.backend_hostname("World");
 
 INSTALLATION
 ============
@@ -90,7 +90,7 @@ In your VCL you could then use this vmod along the following lines::
 
         sub vcl_deliver {
                 # This sets resp.http.hello to "Hello, World"
-                set resp.http.hello = dynamic.hello("World");
+                set resp.http.hello = dynamic.backend_hostname("World");
         }
 
 COMMON PROBLEMS

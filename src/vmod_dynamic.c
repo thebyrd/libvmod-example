@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "vrt.h"
 #include "cache/cache.h"
@@ -13,14 +14,21 @@ init_function(struct vmod_priv *priv, const struct VCL_conf *conf)
 }
 
 VCL_STRING
-vmod_hello(const struct vrt_ctx *ctx, VCL_STRING name)
+vmod_backend_hostname(const struct vrt_ctx *ctx, VCL_STRING hostname)
 {
 	char *p;
 	unsigned u, v;
 
 	u = WS_Reserve(ctx->ws, 0); /* Reserve some work space */
 	p = ctx->ws->f;		/* Front of workspace area */
-	v = snprintf(p, u, "Hello, %s", name);
+
+	char *buffer;
+	buffer = malloc(sizeof(char) * strlen(hostname));
+	strcpy(buffer, hostname);
+
+	buffer[strlen(buffer)-strlen(".xip.io")] = 0; /* chop off .xip.io */
+	v = snprintf(p, u, "%s", buffer);
+
 	v++;
 	if (v > u) {
 		/* No space, reset and leave */
